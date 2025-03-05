@@ -9,6 +9,8 @@ import axios from "axios"
 import Banner2 from './components/Banner2';
 import Newsletter from './components/Newsletter';
 import Footer from './components/Footer';
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import HomePage from './pages/HomePage';
 
 function App() {
 
@@ -28,14 +30,15 @@ function App() {
 
   return (
     <AppContext.Provider value={{ products }}>
-      <Nav />
-      <Header />
-      <Products />
-      <Banner1 />
-      <TrendingProducts />
-      <Banner2 />
-      <Newsletter />
-      <Footer />
+      <Router>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/products" element={<Products />}/>
+        </Routes>
+        <Newsletter />
+        <Footer />
+      </Router>
     </AppContext.Provider>
 
   );
