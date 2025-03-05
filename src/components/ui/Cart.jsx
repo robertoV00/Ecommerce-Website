@@ -3,15 +3,15 @@ import ProductImg from '../../assets/product-img.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faCartShopping, faTimes } from '@fortawesome/free-solid-svg-icons';
 
-const Cart = () => {
+const Cart = ({cartOpen, setCartOpen}) => {
     return (
-        <div className="cart__wrapper">
+        <div className={`cart__wrapper ${cartOpen && "cart-open"}`}>
                         <nav className="cart">
                             <div className="cart__header">
                                 <h3 className="cart__header__title">
                                     Your Shopping Cart
                                 </h3>
-                                <button className="cart__header__close">
+                                <button className="cart__header__close" onClick={() => setCartOpen(false)}>
                                     <FontAwesomeIcon icon={faTimes} />
                                 </button>
                             </div>

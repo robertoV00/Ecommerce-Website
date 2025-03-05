@@ -1,23 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import Product from "./ui/Product";
 import axios from "axios"
+import ProductSkeleton from './ui/ProductSkeleton';
+import { AppContext } from "../context/AppContext";
 
 const Products = () => {
+
+    const { products } = useContext(AppContext);
     
-    const [products, setProducts] = useState([])
-
-    async function fetchProducts() {
-        const {data} = await axios.get("https://ecommerce-samurai.up.railway.app/product");
-
-        const productsData = data.data;
-
-        setProducts(productsData);
-    }
-
-    useEffect(() => {
-        fetchProducts();
-    }, [])
-
     return (
         <section id="products">
             <div className="container">
@@ -26,7 +16,8 @@ const Products = () => {
                         Products we are proud of
                     </h2>
                     <div className="products__list">
-                        {products.slice(0, 8).map((product) => <Product key={product.id} product={product} />)}
+                        {products.length > 0 ? products.slice(0, 8).map((product) => (<Product key={product.id} product={product} />)) : ( new Array(8).fill(0).map((_, index) => <ProductSkeleton key={index}/>))}
+                        {/* when we create the 8 elements in the array they start off as no value so we use the fill method  */}
                     </div>
                 </div>
             </div>
