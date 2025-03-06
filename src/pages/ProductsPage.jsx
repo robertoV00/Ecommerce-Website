@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 import Product from '../components/ui/Product';
 import ProductSkeleton from '../components/ui/ProductSkeleton';
+import { Link } from 'react-router-dom';
 
 const ProductsPage = () => {
     const {products} = useContext(AppContext);
@@ -19,11 +20,11 @@ const ProductsPage = () => {
             <div className="container">
                 <div className="row all-products__row">
                     <div className="products__header">
-                        <a href="/" className="products__header__link">
+                        <Link to="/" className="products__header__link">
                             <span className='products__header__link__text'>
                                 {"< Home"}
                             </span>
-                        </a>
+                        </Link>
                         <h1 className="products__header__title">
                             Products
                         </h1>
@@ -39,7 +40,7 @@ const ProductsPage = () => {
                     </div>
                     <div className="products__list">
                         {
-                            products.length > 0 ? (filteredProducts.length > 0 ? filteredProducts : products).map((product) => <Product product={product} key={product.id} />) : new Array(20).fill(0).map(() => <ProductSkeleton />)
+                            products.length > 0 ? (filteredProducts.length > 0 ? filteredProducts : products).map((product) => <Product product={product} key={product.id} />) : new Array(20).fill(0).map((_, index) => <ProductSkeleton key={index}/>)
                         }
                     </div>
                 </div>

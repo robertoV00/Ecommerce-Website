@@ -4,18 +4,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faBars, faCartShopping, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const Navbar = ({setCartOpen, setMenuOpen}) => {
     return (
         <nav className="nav">
                         <div className="nav__container">
-                                <a href="/">
+                                <Link to="/">
                                     <img src={NavLogo} alt="" className="nav__logo" />
-                                </a>
+                                </Link>
                             <div className="nav__links">
-                                <a href="/products" className="nav__link">
+                                <Link to="/products" className="nav__link">
                                     Products
-                                </a>
+                                </Link>
                                 <button className="nav__cart" onClick={() => setCartOpen(true)}>
                                     <FontAwesomeIcon icon={faCartShopping} />
                                     <span className="cart__length">

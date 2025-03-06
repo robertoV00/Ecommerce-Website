@@ -1,11 +1,12 @@
 import React from "react";
 import ProductImg from "../../assets/product-img.jpg";
+import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
   // console.log(product)
 
   return (
-    <a href="" className="product">
+    <Link to="" className="product">
       <img
         src={`https://ecommerce-samurai.up.railway.app/${product.images[0]}`}
         alt=""
@@ -15,7 +16,7 @@ const Product = ({ product }) => {
         <h3 className="product__details__title">{product.name}</h3>
         <span className="product__details__price">${product.price}</span>
       </div>
-    </a>
+    </Link>
   );
 };
 

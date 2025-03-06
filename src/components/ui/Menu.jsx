@@ -5,6 +5,7 @@ import {
   faCartShopping,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const Menu = ({ menuOpen, setMenuOpen }) => {
   return (
@@ -14,12 +15,12 @@ const Menu = ({ menuOpen, setMenuOpen }) => {
         <FontAwesomeIcon icon={faTimes} />
       </button>
       <div className="menu__links">
-        <a href="/" className="menu__link">
+        <Link to="/" className="menu__link">
           Home
-        </a>
-        <a href="/" className="menu__link">
+        </Link>
+        <Link to="/" className="menu__link">
           Products
-        </a>
+        </Link>
         <button className="menu__link menu__cart">Cart</button>
       </div>
     </nav>
