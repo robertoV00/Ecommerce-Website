@@ -34,9 +34,15 @@ function App() {
     setCart(prevCart => prevCart.filter(item => item.id !== product.id))
   }
 
-  useEffect(() => {
+  function cartLength() {
+    let counter = 0
 
-  }, [cart])
+    cart.forEach((item) => {
+      counter += item.quantity
+
+    })
+    return counter
+  }
 
     async function fetchProducts() {
         const {data} = await axios.get("https://ecommerce-samurai.up.railway.app/product");
@@ -51,7 +57,7 @@ function App() {
     }, [])
 
   return (
-    <AppContext.Provider value={{ products, addToCart, cart, reduceCartQuantity, removeFromCart}}>
+    <AppContext.Provider value={{ products, addToCart, cart, reduceCartQuantity, removeFromCart, cartLength}}>
       <Router>
         <Nav />
         <Routes>

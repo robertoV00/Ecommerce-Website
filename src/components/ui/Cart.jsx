@@ -1,3 +1,5 @@
+
+import EmptyCartImg from '../../assets/empty-cart.svg';
 import React, { useContext } from 'react';
 import ProductImg from '../../assets/product-img.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -30,6 +32,7 @@ const Cart = ({cartOpen, setCartOpen}) => {
                             </div>
                             <div className="cart__items">
                                 {
+                                    cart.length > 0? 
                                     cart.map((item) => (
                                         <div className="cart__item">
                                             <div className="cart__item__left">
@@ -57,6 +60,14 @@ const Cart = ({cartOpen, setCartOpen}) => {
                                             <FontAwesomeIcon icon={faTimes} className='cart__item__remove' onClick={() => removeFromCart(item)}/>
                                         </div>
                                     ))
+                                    :
+                                        <div className='cart__empty'>
+                                            <img src={EmptyCartImg} alt="" className="cart__empty__img" />
+                                            <span className="cart__empty__text">Your cart is empty!</span>
+                                            <button className="cart__empty__btn" onClick={() => setCartOpen(false)}>
+                                                Keep Browsing
+                                            </button>
+                                        </div>
                                 }
                             </div>
                             <div className="cart__footer">
