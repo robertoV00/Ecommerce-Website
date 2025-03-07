@@ -1,9 +1,12 @@
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
-const SuccessPopup = () => {
+const SuccessPopup = ({successOpen}) => {
     return (
-        <div>
-            
+        <div className={`success ${successOpen && "success-open"}`}>
+            <FontAwesomeIcon icon={faCircleCheck} />
+            <span>Item added to cart</span>
         </div>
     );
 }
