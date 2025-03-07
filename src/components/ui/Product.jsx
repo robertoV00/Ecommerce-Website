@@ -6,7 +6,7 @@ const Product = ({ product }) => {
   // console.log(product)
 
   return (
-    <Link to="" className="product">
+    <Link to={`/products/${product.id}`} className="product">
       <img
         src={`https://ecommerce-samurai.up.railway.app/${product.images[0]}`}
         alt=""
